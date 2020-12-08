@@ -1,0 +1,25 @@
+<?php
+$host = "localhost";
+$user = "root";
+$pass = "";
+$name = "dht11";
+
+$suhu = $_GET["suhu"];
+$kelembapan = $_GET["kelembaban"];
+
+$conn = new mysqli ($host, $user, $pass, $name);
+
+if ($conn->connect_error) {
+	die("koneksi gagal : ". $conn->connect_error);
+}
+
+$sql = "INSERT INTO dht11 (suhu, kelembaban) VALUES ('$suhu','$kelembaban')";
+
+if ($conn->query($sql)===TRUE) {
+	echo "Sukses-Tersimpan :". $suhu."juga".$kelembaban;
+}else{
+	echo "error".$conn->error;
+}
+
+$conn->close();
+?>
